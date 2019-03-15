@@ -1,0 +1,31 @@
+
+RewriteEngine on
+# Redirect from HTTP to HTTPS
+RewriteCond %{HTTP_HOST} ^offroadchecklist.com [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.offroadchecklist.com/$1 [R=301,L]
+
+
+# Removes .html from end of URL
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+ErrorDocument 404 /404.html
+
+
+
+
+
+
+
+
+
+
+
+
